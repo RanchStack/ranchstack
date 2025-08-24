@@ -1,26 +1,59 @@
 import Card from "@/components/ui/card";
+import CircularButton from "@/components/ui/circular-button";
 import { FaGraduationCap, FaLightbulb } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 
 export default function AboutPage() {
+  const headshotUrl = "/images/headshot-placeholder.jpg";
   return (
-    <section className="flex flex-col my-6 px-10">
-      <h1 className="text-5xl font-bold mb-3">About Me</h1>
-      <p className="mb-6 text-xl">
-        Hi, I’m Danielle — a developer and designer based in rural Alberta with
-        over a decade of experience in admin and accounting, and a deep-rooted
-        passion for creating user-focused digital tools.
-      </p>
-      <p className="mb-6 text-xl">
-        I’ve called Lac Ste. Anne County home for over 10 years, and while I’m
-        open to working on a wide range of projects, I’m especially excited to
-        bring thoughtful, modern tech solutions to rural communities and small
-        businesses. I’m looking forward to new challenges where I can create
-        meaningful, efficient, and beautiful digital experiences. Let’s build
-        something great together!
-      </p>
+    <section className="flex flex-col p-10">
+      <div className="w-[400px] mb-10 ml-3">
+        <h1 className="text-5xl font-bold text-center">About Me</h1>
+      </div>
+      <section className="flex gap-6">
+        <div className="relative flex-shrink-0 ml-5">
+          {/* Background circle / crescent */}
+          <div
+            className="absolute bottom-5 right-5 rounded-full"
+            style={{
+              width: 410,
+              height: 400,
+              background: "var(--color-secondary)",
+              zIndex: 0,
+            }}
+          />
+          {/* Headshot */}
+          <img
+            src={headshotUrl}
+            alt="Headshot"
+            className="object-cover rounded-full shadow-lg relative z-10"
+            style={{ width: 400, height: 400 }}
+          />
+        </div>
 
-      <section className="grid grid-cols-3 gap-6">
+        <section className="flex flex-col justify-center gap-6">
+          <p className="text-2xl">
+            Hi, I’m Danielle — a developer and designer based in rural Alberta
+            with over a decade of experience in admin and accounting, and a
+            deep-rooted passion for creating user-focused digital tools.
+          </p>
+          <p className="text-2xl">
+            I’ve called Lac Ste. Anne County home for over 10 years, and while
+            I’m open to working on a wide range of projects, I’m especially
+            excited to bring thoughtful, modern tech solutions to rural
+            communities and small businesses. I’m looking forward to new
+            challenges where I can create meaningful, efficient, and beautiful
+            digital experiences. Let’s build something great together!
+          </p>
+          <section className="mt-3 flex justify-around">
+            <CircularButton icon={<FaGraduationCap/>} tooltip={"Education"}/>
+            <CircularButton icon={<MdWork/>} tooltip={"Experience"}/>
+            <CircularButton icon={<FaLightbulb/>} tooltip={"Mantra"}/>
+          </section>
+        </section>
+      </section>
+
+      <section className="grid grid-cols-3 gap-6 hidden">
         <Card
           icon={<FaGraduationCap />}
           children={
