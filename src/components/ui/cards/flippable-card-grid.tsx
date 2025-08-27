@@ -11,24 +11,24 @@ interface Card {
 export default function CardGrid({ cards }: { cards: Card[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [cardHeight, setCardHeight] = useState(0);
+  const [overflowHidden, setOverflowHidden] = useState(true);
   const [, setRerender] = useState(0);
 
   const measureCardHeight = () => {
     if (containerRef.current) {
-      // measure all FlippableCard wrappers
       const heights = Array.from(containerRef.current.children).map(
         (child) => (child as HTMLElement).scrollHeight
       );
       setCardHeight(Math.max(...heights));
+      setOverflowHidden(false)
     }
   };
 
   useEffect(() => {
-    // Initial measurement
     measureCardHeight();
 
     const handleResize = () => {
-      setRerender((v) => v + 1); // force re-render
+      setRerender((v) => v + 1);
     };
 
     window.addEventListener("resize", handleResize);
@@ -38,7 +38,7 @@ export default function CardGrid({ cards }: { cards: Card[] }) {
   return (
     <div ref={containerRef} className="grid grid-cols-3 gap-6">
       {cards.map((card, i) => (
-        <div key={i} style={{ height: cardHeight }}>
+        <div key={i} className="card-wrapper" style={{ height: cardHeight, overflow: overflowHidden ? "hidden" : "visible" }}>
           <FlippableCard front={card.front} back={card.back} />
         </div>
       ))}

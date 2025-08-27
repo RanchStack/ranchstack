@@ -7,7 +7,7 @@ export default function FlippableCard({ front, back }: { front: React.ReactNode;
 
   return (
     <div
-      className="perspective cursor-pointer w-full h-full hover:scale-105 hover:shadow-[0_0_25px_rgba(0,0,0,0.6)] focus:outline-none"
+      className="perspective cursor-pointer w-full h-full transition-transform hover:scale-105 hover:shadow-[0_0_25px_rgba(0,0,0,0.6)] focus:outline-none"
       onClick={() => setFlipped(!flipped)}
     >
       <div
