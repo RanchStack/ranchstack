@@ -24,14 +24,7 @@
   --color-foreground: #1d201f;
 }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans), sans-serif;
-  min-height: 100vh;
-  margin: 0;
-}
-
+/* Animations */
 .title-pan-in {
   transform: translateX(-100%); /* start fully hidden behind mask */
   animation: slideReveal 1s ease-out forwards;
@@ -47,3 +40,8 @@ body {
     opacity: 1;
   }
 }
+
+.perspective { perspective: 1000px; }
+.backface-hidden { backface-visibility: hidden; }
+.transform-style-preserve-3d { transform-style: preserve-3d; }
+.rotate-y-180 { transform: rotateY(180deg); }

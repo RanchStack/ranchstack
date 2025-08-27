@@ -1,11 +1,71 @@
-import Card from "@/components/ui/card";
-import PageTitle from "@/components/ui/page-title";
-import ContactButton from "@/components/ui/buttons/contact-button";
+"use client";
+
 import { FaLightbulb, FaUniversity } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
+import PageTitle from "@/components/ui/page-title";
+import ContactButton from "@/components/ui/buttons/contact-button";
+import FlippableCardFront from "@/components/ui/cards/flippable-card-front";
+import FlippableCardBack from "@/components/ui/cards/flippable-card-back";
+import CardGrid from "@/components/ui/cards/flippable-card-grid";
 
 export default function AboutPage() {
   const headshotUrl = "/images/headshot-placeholder.jpg";
+
+  const cards = [
+    {
+      front: <FlippableCardFront icon={<FaUniversity />} />,
+      back: (
+        <FlippableCardBack icon={<FaUniversity />}>
+          <p>
+            I recently completed NAIT’s Digital Media and IT (DMIT) diploma in
+            Software Development, with a focus on frontend technologies.
+          </p>
+          <p>
+            Before that, I took Python training and started with a foundation
+            in bookkeeping and accounting systems. I'm always eager to keep
+            learning and expanding both my technical and business skills.
+          </p>
+        </FlippableCardBack>
+      ),
+    },
+    {
+      front: <FlippableCardFront icon={<MdWork />} />,
+      back: (
+        <FlippableCardBack icon={<MdWork />}>
+          <p>
+            Before transitioning to tech, I spent over 10 years in
+            administrative and accounting roles where I focused heavily on data
+            entry and workflow efficiency.
+          </p>
+          <p>
+            That background shaped how I approach development today: I
+            prioritize user experience by aiming for maximum output with
+            minimum effort on the user's part. Simple, intuitive, and smart
+            interfaces are at the heart of everything I build.
+          </p>
+        </FlippableCardBack>
+      ),
+    },
+    {
+      front: <FlippableCardFront icon={<FaLightbulb />} />,
+      back: (
+        <FlippableCardBack icon={<FaLightbulb />}>
+          <p>
+            I also care deeply about scalability and dynamic design — I build
+            systems that are flexible from day one, minimizing the need for
+            rework as needs evolve. Future-proofing is always part of my
+            process.
+          </p>
+          <p>
+            Visually, I’m a stickler for detail. If something doesn’t look quite
+            right, I’ll fine-tune it until it does. Clean, purposeful design is
+            more than a preference — it’s a principle I work by.
+          </p>
+        </FlippableCardBack>
+      ),
+    },
+  ];
+
   return (
     <section className="flex flex-col p-10">
       <section className="flex gap-6 mb-10">
@@ -46,66 +106,14 @@ export default function AboutPage() {
             communities and small businesses. I’m looking forward to new
             challenges where I can create meaningful, efficient, and beautiful
             digital experiences. Let’s build something great together!
-                  </p>
-                  
-            <ContactButton /> 
+          </p>
+
+          <ContactButton />
         </section>
       </section>
 
-      <section className="grid grid-cols-3 gap-6 text-lg">
-        <Card
-          icon={<FaUniversity />}
-          children={
-            <>
-              <p>
-                I recently completed NAIT’s Digital Media and IT (DMIT) diploma
-                in Software Development, with a focus on frontend technologies.
-              </p>
-              <p>
-                Before that, I took Python training and started with a
-                foundation in bookkeeping and accounting systems. I'm always eager to keep learning and
-                expanding both my technical and business skills.
-              </p>
-            </>
-          }
-        />
-        <Card
-          icon={<MdWork />}
-          children={
-            <>
-              <p>
-                Before transitioning to tech, I spent over 10 years in
-                administrative and accounting roles where I focused heavily on
-                data entry and workflow efficiency.
-              </p>
-              <p>
-                That background shaped how I approach development today: I
-                prioritize user experience by aiming for maximum output with
-                minimum effort on the user's part. Simple, intuitive, and smart
-                interfaces are at the heart of everything I build.
-              </p>
-            </>
-          }
-        />
-        <Card
-          icon={<FaLightbulb />}
-          children={
-            <>
-              <p>
-                I also care deeply about scalability and dynamic design — I
-                build systems that are flexible from day one, minimizing the
-                need for rework as needs evolve. Future-proofing is always part
-                of my process.
-              </p>
-              <p>
-                Visually, I’m a stickler for detail. If something doesn’t look
-                quite right, I’ll fine-tune it until it does. Clean, purposeful
-                design is more than a preference — it’s a principle I work by.
-              </p>
-            </>
-          }
-        />
-      </section>
+      {/* Card Grid */}
+      <CardGrid cards={cards} />
     </section>
   );
 }
