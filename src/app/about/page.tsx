@@ -1,23 +1,23 @@
 import Card from "@/components/ui/card";
-import CircularButton from "@/components/ui/circular-button";
-import { FaGraduationCap, FaLightbulb } from "react-icons/fa";
+import PageTitle from "@/components/ui/page-title";
+import ContactButton from "@/components/ui/buttons/contact-button";
+import { FaLightbulb, FaUniversity } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 
 export default function AboutPage() {
   const headshotUrl = "/images/headshot-placeholder.jpg";
   return (
     <section className="flex flex-col p-10">
-      <div className="w-[400px] mb-10 ml-3">
-        <h1 className="text-5xl font-bold text-center">About Me</h1>
-      </div>
-      <section className="flex gap-6">
-        <div className="relative flex-shrink-0 ml-5">
+      <section className="flex gap-6 mb-10">
+        <div className="relative flex-shrink-0 mt-7 ml-9">
           {/* Background circle / crescent */}
           <div
-            className="absolute bottom-5 right-5 rounded-full"
+            className="absolute rounded-full shadow-[0_0_25px_rgba(0,0,0,0.6)]"
             style={{
-              width: 410,
-              height: 400,
+              left: -35,
+              top: -25,
+              width: 430,
+              height: 420,
               background: "var(--color-secondary)",
               zIndex: 0,
             }}
@@ -26,12 +26,14 @@ export default function AboutPage() {
           <img
             src={headshotUrl}
             alt="Headshot"
-            className="object-cover rounded-full shadow-lg relative z-10"
-            style={{ width: 400, height: 400 }}
+            className="object-cover rounded-full shadow-[0_0_25px_rgba(0,0,0,0.6)] relative z-10"
+            style={{ width: 420, height: 420 }}
           />
         </div>
 
-        <section className="flex flex-col justify-center gap-6">
+        <section className="flex flex-col text-left gap-6">
+          <PageTitle title={"About Me"} />
+
           <p className="text-2xl">
             Hi, I’m Danielle — a developer and designer based in rural Alberta
             with over a decade of experience in admin and accounting, and a
@@ -44,18 +46,15 @@ export default function AboutPage() {
             communities and small businesses. I’m looking forward to new
             challenges where I can create meaningful, efficient, and beautiful
             digital experiences. Let’s build something great together!
-          </p>
-          <section className="mt-3 flex justify-around">
-            <CircularButton icon={<FaGraduationCap/>} tooltip={"Education"}/>
-            <CircularButton icon={<MdWork/>} tooltip={"Experience"}/>
-            <CircularButton icon={<FaLightbulb/>} tooltip={"Mantra"}/>
-          </section>
+                  </p>
+                  
+            <ContactButton /> 
         </section>
       </section>
 
-      <section className="grid grid-cols-3 gap-6 hidden">
+      <section className="grid grid-cols-3 gap-6 text-lg">
         <Card
-          icon={<FaGraduationCap />}
+          icon={<FaUniversity />}
           children={
             <>
               <p>
@@ -64,7 +63,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Before that, I took Python training and started with a
-                foundation in bookkeeping. I'm always eager to keep learning and
+                foundation in bookkeeping and accounting systems. I'm always eager to keep learning and
                 expanding both my technical and business skills.
               </p>
             </>
